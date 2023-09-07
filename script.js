@@ -3,9 +3,11 @@
 const scissor = document.querySelector(".scissor");
 const paper = document.querySelector(".paper");
 const rock = document.querySelector(".rock");
-let results = document.querySelector(".results");
+const results = document.querySelector(".results");
 let button = document.querySelectorAll(".dis");
-const reset = document.querySelector(".reset"); 
+const reset = document.querySelector(".reset");
+let winner =  document.querySelector(".winnerDis") 
+
 
 
 //getting random choice from computer
@@ -36,6 +38,10 @@ console.log(playRound(playerSelection,computerSelection))
 round++;
 console.log("round: "+round)
 
+results.innerHTML = `<h2>rounds: ${round}</h2><br>
+                     <h2>player marks:${playerMarks}</h2>
+                      <h2 >PC marks:${pcMarks}</h2> `
+
 console.log("computer marks: "+pcMarks);
 console.log("Player marks: "+playerMarks);
 
@@ -60,6 +66,21 @@ if(round===5){
  
 }
 
+
+if(round===5){
+    if(playerMarks>pcMarks){
+      winner.innerHTML = `you won`
+    
+    }
+    if (playerMarks==pcMarks) {
+        winner.innerHTML = `match draw`
+    }
+    if (pcMarks>playerMarks) {
+        winner.innerHTML = `pc won`
+    }
+
+}
+
 })
 
 
@@ -71,6 +92,12 @@ const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection,computerSelection))
 round++;
 console.log("round: "+round)
+
+
+results.innerHTML = `<h2>rounds: ${round}</h2><br>
+                     <h2>player marks:${playerMarks}</h2>
+                      <h2 >PC marks:${pcMarks}</h2>  `
+
 
 console.log("computer marks: "+pcMarks);
 console.log("Player marks: "+playerMarks);
@@ -92,6 +119,23 @@ if(round===5){
         element.disabled=true
     });
 }
+if(round===5){
+    if(playerMarks>pcMarks){
+      winner.innerHTML = `you won`
+    
+    }
+    if (playerMarks==pcMarks) {
+        winner.innerHTML = `match draw`
+    }
+    if (pcMarks>playerMarks) {
+        winner.innerHTML = `pc won`
+    }
+
+}
+
+
+
+
 })
 
 
@@ -105,7 +149,11 @@ console.log(playRound(playerSelection,computerSelection))
 round++;
 console.log("round: "+round)
 
-console.log("computer marks: \n"+pcMarks);
+results.innerHTML = `<h2>rounds: ${round}</h2><br>
+                     <h2>player marks:${playerMarks}</h2>
+                      <h2 >PC marks:${pcMarks}</h2>  `
+
+console.log("computer marks: "+pcMarks);
 console.log("Player marks: "+playerMarks);
 
 if(round===5){
@@ -128,11 +176,28 @@ if(round===5){
 }
 
 
+if(round===5){
+    if(playerMarks>pcMarks){
+      winner.innerHTML = `you won`
+    
+    }
+    if (playerMarks==pcMarks) {
+        winner.innerHTML = `match draw`
+    }
+    if (pcMarks>playerMarks) {
+        winner.innerHTML = `pc won`
+    }
+
+}
+
+
 })
 
 
 
 //reset btn
+
+
 
 reset.addEventListener("click",()=>
 
@@ -142,15 +207,28 @@ button.forEach(element => {
     pcMarks=0
     playerMarks=0
     console.log(" ")
-
+    results.innerHTML = `<h2>rounds: ${round}</h2><br>
+                     <h2>player marks:${playerMarks}</h2>
+                      <h2 >PC marks:${pcMarks}</h2>  `
+    winner.innerHTML = `winner displayed hear`
 })
-
 )
 
 
+//results display
 
 
 
+
+
+
+
+
+
+
+
+
+//playing func
 
 function playRound(playerSelection,computerSelection) {
         console.log("User: "+playerSelection)
